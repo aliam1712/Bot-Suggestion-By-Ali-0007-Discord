@@ -21,7 +21,7 @@ client.on('message', message =>{
         .setDescription(`
         1) ${prefix}sugs on / ${prefix}sugs off | turn on and off the suggestions.
         2) ${prefix}set-room | set the suggestion room.
-        3) ${prefix}sugs-status | show the suggestion status.
+        3) ${prefix}sug-status | show the suggestion status.
         `)//By: ALi#0007
         .setFooter(message.author.tag, message.author.avatarURL())
         message.channel.send(embed)
