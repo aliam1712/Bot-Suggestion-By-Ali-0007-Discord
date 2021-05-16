@@ -9,6 +9,7 @@ let prefix = config.prefix
 //By: Ali#0007
 client.on('ready', () =>{
     console.log(`Logged in as ${client.user.tag}`)
+    console.log(`Bot developer: Ali#0007`)
     client.user.setActivity(`${prefix}help`)
 });
 
@@ -28,11 +29,13 @@ client.on('message', async message =>{
             await db.set(`Sugs_${message.guild.id}`, "off")
             message.channel.send(`Suggestion turned off! `)//By: Ali#0007
         
-    } else if(message.content.startsWith(prefix + 'sug-status')){
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You dont have the required permission `ADMINISTRATOR` ");
-        let ChannelFetch = await db.fetch(`Channel_${message.guild.id}`)
-        let sugsStatus = await db.fetch(`Sugs_${message.guild.id}`)
-        await message.channel.send(`Sugs is: **${sugsStatus}**\nThe Room is: <#${ChannelFetch}>`)//By: Ali#0007
+    } else{
+        if(message.content.startsWith(prefix + 'sug-status')){
+            if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send("You dont have the required permission `ADMINISTRATOR` ");
+            let ChannelFetch = await db.fetch(`Channel_${message.guild.id}`)
+            let sugsStatus = await db.fetch(`Sugs_${message.guild.id}`)
+            await message.channel.send(`Sugs is: **${sugsStatus}**\nThe Room is: <#${ChannelFetch}>`)//By: Ali#0007
+     
     } else {
         if(message.content.startsWith(prefix + 'set-room')){//By: Ali#0007
             let Suggestion = await db.fetch(`Sugs_${message.guild.id}`)
@@ -58,7 +61,7 @@ client.on('message', async message =>{
 
         }
     }
-    }})//By: Ali#0007
+}}})//By: Ali#0007
 
 
 
@@ -94,4 +97,3 @@ client.on('message', async message =>{//By: Ali#0007
 
         
 })
-
